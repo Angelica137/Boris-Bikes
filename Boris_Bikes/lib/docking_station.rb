@@ -1,10 +1,17 @@
-class DockingStation
-  def release_bike
-    bike = "bike released"
-    p bike
+
+class Bike
+  attr_reader :working
+  def initialize
+    @working = true
+  end
+  def working?
+    working
   end
 end
 
-
-
-#  attr_reader :bikes, :capacity
+class DockingStation
+  def release_bike
+    bike.working?
+    p bike
+  end
+end
