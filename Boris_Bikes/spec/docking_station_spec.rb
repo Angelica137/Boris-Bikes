@@ -11,4 +11,16 @@ describe DockingStation do
   #TEST: test for docking a bike at a docking station.
   it { is_expected.to respond_to(:dock).with(1).argument }
 
+  it { is_expected.to respond_to(:has_bike?) }
+
+  it 'tells us there is a bike when there is a bike' do
+    docking_station = DockingStation.new
+    docking_station.dock(Bike.new)
+    expect(docking_station.has_bike?).to eq true
+  end
+
+  it 'tells us there is no bike when there is no bike' do
+    docking_station = DockingStation.new
+    expect(docking_station.has_bike?).to eq false
+  end
 end
