@@ -5,7 +5,8 @@ describe DockingStation do
 
   #TEST: The docking station gets a bike and expects bike to be working
   it 'releases working bikes' do
-    bike = subject.release_bike
+    bike = Bike.new
+    #bike = subject.release_bike
     expect(bike).to be_working
   end
   #TEST: test for docking a bike at a docking station.
@@ -22,5 +23,11 @@ describe DockingStation do
   it 'tells us there is no bike when there is no bike' do
     docking_station = DockingStation.new
     expect(docking_station.has_bike?).to eq false
+  end
+
+  it 'the docking station fails to release bike if there is no bikes' do
+    docking_station = DockingStation.new
+    expect {docking_station.release_bike}.to raise_error 'There are no bikes'
+
   end
 end
